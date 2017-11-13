@@ -18,12 +18,18 @@ public class Hero extends LivingThing{
 
 
 
-
+    @Override
     public void wounded(int damage){
-        hitPoint -= damage;
-        if( hitPoint < 0 ) {
-            dead = true;
-            System.out.printf("勇者%sは道半ばで力尽きてしまった。\n", name);
+        int hp = getHitPoint();
+        String na = getName();
+        boolean de = getIsdead();
+
+        hp -= damage;
+        setHitPoint(hp);
+        if( hp < 0 ) {
+            de = true;
+            setIsdead (de);
+            System.out.printf("勇者%sは道半ばで力尽きてしまった。\n", na);
         }
     }
 }
